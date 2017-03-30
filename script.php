@@ -1,6 +1,6 @@
 <?php
 ini_set('memory_limit', '-1');
-$input = file('input6.txt');
+// $input = file('input6.txt');
 
 $size = array_shift($input) - 1;
 
