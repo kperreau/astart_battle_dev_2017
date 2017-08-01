@@ -1,6 +1,6 @@
 <?php
 ini_set('memory_limit', '-1');
-// $input = file('input6.txt');
+$input = file('/var/www/html/opteamiser/test/input6.txt');
 
 $size = array_shift($input) - 1;
 
@@ -87,7 +87,7 @@ function	moove($x, $y, &$current, &$open, &$close, &$end, &$node)
 		$cy = ($current->y + $y) < 0 ? $size : 0;
 	
 	if (($map[$cy][$cx] == "." || $map[$cy][$cx] == "O")
-		&& !isset($close[(string)($cx)."_".(string)($cy)]))
+		&& !isset($close[$cx][$cy]))
 	{
 		$tmp = new Node($cx, $cy, $current->count, $end, $current);
 		$node[] = $tmp;
@@ -103,7 +103,7 @@ function	astar(Node &$start, Node &$end)
 	$close = null;
 	$open = new PQ();
 	
-	$close[(string)($start->x)."_".(string)($start->y)] = $start;
+	$close[$start->x][$start->y] = $start;
 	$current = $start;
 	while (1)
 	{
@@ -123,7 +123,7 @@ function	astar(Node &$start, Node &$end)
 			return (-1);
 		
 		$current = $open->extract();
-		$close[(string)($current->x)."_".(string)($current->y)] = $current;
+		$close[$current->x][$current->y] = $current;
 	}
 	$lol = ($current->score);
 	// echo "open: ", $open->count(), "\n";
