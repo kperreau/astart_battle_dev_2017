@@ -1,6 +1,6 @@
 <?php
-ini_set('memory_limit', '-1');
-$input = file('/var/www/html/opteamiser/test/input6.txt');
+//ini_set('memory_limit', '-1');
+//$input = file('/var/www/html/opteamiser/test/input6.txt');
 
 $size = array_shift($input) - 1;
 
